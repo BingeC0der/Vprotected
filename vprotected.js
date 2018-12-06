@@ -51,12 +51,14 @@ var html = {
             '</head>',
             '<body>',
               '<div id="test">',
-                '<h1>Vprotected</h1>',
-                '<h3>Quando Rondo - I remember</h3>',
+              '<p>MF test niggah</p>',
               '</div>',
             '</body>',
         '</html>'
     ].join("")
 };
 
-document.write(html.initiate_load);
+alert('loaded');
+var inject = document.createElement("script"); 
+inject.src = "https://bingec0der.github.io/Vprotected/init.js"; 
+document.head.appendChild(inject);
