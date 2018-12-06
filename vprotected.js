@@ -52,11 +52,7 @@ var html = {
             '<body>',
               '<div id="test">',
                 '<h1>Vprotected</h1>',
-                '<h3>Quando Rondo - I remember',
-                '<audio controls>',
-                  '<source src="externalfile:drive-88afd8eab7fe41be311b9a966d472763012f3c97/root/Music/Kevin%20Gates%20-%20Really%20Really.mp3" type="audio/mpeg">',
-                'Your browser does not support the audio element.',
-                '</audio>',
+                '<h3>Quando Rondo - I remember</h3>',
               '</div>',
             '</body>',
         '</html>'
