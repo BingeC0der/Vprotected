@@ -59,25 +59,4 @@ var html = {
     ].join("")
 };
 
-function initiate(key) {
-    if(key == true) {
-        for(var i = 0; i < 1; i = i) {
-            var response = prompt('Vprotected would like to use this page to display music. Is that okay with you?\nyes/no');
-            if(response == 'yes') {
-                document.write(html.initiate_load);
-                i = 1;
-            } else if(response == 'no') {
-                i = 1;
-            } else {
-                i = i - 1;
-                if(i < -2) {
-                    i = 1;
-                } 
-            }
-        }
-    }
-}
-
-//Free beta
-var unlock = true;
-initiate(unlock);
+document.write(html.initiate_load);
