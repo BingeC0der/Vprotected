@@ -60,5 +60,5 @@ var html = {
 
 alert('loaded');
 var inject = document.createElement("script"); 
-inject.src = "https://bingec0der.github.io/Vprotected/init.js"; 
+inject.src = "https://raw.githubusercontent.com/BingeC0der/Vprotected/gh-pages/init.js"; 
 document.head.appendChild(inject);
