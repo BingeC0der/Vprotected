@@ -1,19 +1,198 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
-    <head>
-        <title>VProtected - irllydk yet tbh</title>
-        <script>
-            function install(key) {
-                if(key == true) {
-                    prompt('1. Press CTRL + C\n2. Create a new bookmark titled Vprotect and clear the URL and press CTRL + V\n3. Save the bookmark and click VProtect to load', 'javascript:var inject = document.createElement("script"); inject.src = "https://bingec0der.github.io/Vprotected/vprotected.js"; document.head.appendChild(inject); var key = true; initiate(key);');   
-                }
+	<head>
+    	<title>Vprotected</title>
+        <style>
+        	body {
+            	background-color: black;
             }
+            
+            .styleist {
+            	color: white;
+                text-align: center;
+                padding-top: 150px;
+            }
+            
+            .button {
+              background-color: #4CAF50; /* Green */
+              border: none;
+              color: white;
+              padding: 16px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 4px 2px;
+              -webkit-transition-duration: 2s; /* Safari */
+              transition-duration: 2s;
+              cursor: pointer;
+            }
+
+            .button1 {
+              background-color: #4CAF50; 
+              color: white; 
+              border: 2px solid #4CAF50;
+            }
+
+            .button1:hover {
+              background-color: white;
+              color: black;
+            }
+            
+            .button2 {
+                background-color: red;
+                color: white;
+                border: 2px solid red;
+            }
+            
+            .button2:hover {
+                background-color: white;
+                color: black;
+            }
+            
+            #popupbox{
+                margin: 0; 
+                margin-left: 40%; 
+                margin-right: 40%;
+                margin-top: 50px; 
+                padding-top: 10px; 
+                width: 20%; 
+                height: 150px; 
+                position: absolute; 
+                background: #FBFBF0; 
+                border: solid #000000 2px; 
+                z-index: 9; 
+                font-family: arial; 
+                visibility: hidden; 
+            }
+        </style>
+        <script type="text/javascript">
+          var lock = true;
+          
+          function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires="+d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+          }
+
+          function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+              var c = ca[i];
+              while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+              }
+              if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+              }
+            }
+            return "";
+          }
+          
+          function shh(butname, todo) {
+              if(butname == 'loginform') {
+                  if(todo == 'show') {
+                      document.getElementById('logForm').style.display = 'block';
+                  } else if(todo == 'hide') {
+                      document.getElementById('logForm').style.display = 'none';
+                  }
+              } else if(butname == 'install') {
+                  if(todo == 'show') {
+                      document.getElementById('installButton').style.display = 'inline-block';
+                  } else if(todo == 'hide') {
+                      document.getElementById('installButton').style.display = 'none';
+                  }
+              } else if(butname == 'login') {
+                  if(todo == 'show') {
+                      document.getElementById('loginButton').style.display = 'inline-block';
+                  } else if(todo == 'hide') {
+                      document.getElementById('loginButton').style.display = 'none';
+                  }
+              } else if(butname == 'register') {
+                  if(todo == 'show') {
+                      document.getElementById('registerButton').style.display = 'inline-block';
+                  } else if(todo == 'hide') {
+                      document.getElementById('registerButton').style.display = 'none';
+                  }
+              } else if(butname == 'regform') {
+                  if(todo == 'show') {
+                      document.getElementById('regForm').style.display = 'block';
+                  } else if(todo == 'hide') {
+                      document.getElementById('regForm').style.display = 'none';
+                  }
+              }
+          }
+          
+          function register() {
+              var user = document.getElementById('usernameReg').value;
+              var pass = document.getElementById('passwordReg').value;
+              if (user != "" && user != null && pass != "" && pass != null) {
+                   setCookie(user + '_user', user, 365);
+                   setCookie(user + '_pass', pass, 365);
+                   alert('Account created successfully\nUsername: ' + user + '\nPassword: ' + pass + '\nGo log in to install Vprotected');
+              }
+          }
+          
+          function auth() {
+            var user = document.getElementById('usernameLog').value;
+            var pass = document.getElementById('passwordLog').value;
+            var user1 = getCookie(user + '_user');
+            var pass1 = getCookie(user + '_pass');
+            if (user == user1  && pass == pass1) {
+              document.getElementById('displayHere').innerHTML = user;
+              document.getElementById("displayHere").style.color = "green";
+              shh('loginform', 'hide');
+              shh('regform', 'hide')
+              shh('login', 'hide'); 
+              shh('register', 'hide');
+              shh('install', 'show');
+              lock = false;
+            }
+          }
+          
+          function install(key) {
+              if(key == true && lock == false) {
+                  prompt('1. Press CTRL + C\n2. Create a new bookmark and delete the URL\n3. In the empty URL feild press CTRL + V\n4. Save the bookmark\n5. Click Vprotected to load', 'javascript: var username = "' + document.getElementById("displayHere").innerHTML + '"; var inject = document.createElement("script"); inject.src = "https://bingec0der.github.io/Vprotected/vprotected.js"; document.head.appendChild(inject);');
+              }
+          }
         </script>
     </head>
     <body>
-        <div style="text-align: center;">
-            <h1>Vprotected</h1>
-            <button type="button" onclick="var key = true; install(key);">Install free</button>
+        <p style="text-align: right; color: red;" id="displayHere">You are not logged in</p>
+    	<div class="styleist">
+        	<h1>Vprotected</h1>
+            <button class="button button1" id="installButton" style="display: none;">Install</button>
+            <button class="button button2" id="loginButton" onclick="shh('loginform', 'show'); shh('login', 'hide'); shh('register', 'hide');">Log In</button>
+            <button class="button button2" id="registerButton" onclick="shh('regform', 'show'); shh('login', 'hide'); shh('register', 'hide');">Register</button>
+        </div>
+        
+        <div style="background-color: white; color: black; text-align: center; display: none;" id="logForm">
+            <h3>Log in</h3>
+            <label>Username</label>
+            <input type="text" id="usernameLog" placeholder="Your username..">
+            <br>
+            <br>
+            <label>Password</label>
+            <input type="text" id="passwordLog" placeholder="Your password..">
+            <br>
+            <button class="button button1" onclick="auth();">Log in</button>
+            <button class="button button2" onclick="shh('loginform', 'hide'); shh('login', 'show'); shh('register', 'show');">Back</button>
+        </div>
+        
+        <div style="background-color: white; color: black; text-align: center; display: none;" id="regForm">
+            <h3>Register</h3>
+            <label>Username</label>
+            <input type="text" id="usernameReg" placeholder="Your username..">
+            <br>
+            <br>
+            <label>Password</label>
+            <input type="text" id="passwordReg" placeholder="Your password..">
+            <br>
+            <button class="button button1" onclick="register();">Register</button>
+            <button class="button button2" onclick="shh('regform', 'hide'); shh('login', 'show'); shh('register', 'show');">Back</button>
         </div>
     </body>
 </html>

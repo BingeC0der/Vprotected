@@ -1,1 +1,0 @@
-document.write(html.initiate_load);
