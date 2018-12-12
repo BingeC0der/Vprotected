@@ -123,6 +123,18 @@
                   } else if(todo == 'hide') {
                       document.getElementById('regForm').style.display = 'none';
                   }
+              } else if(butname == 'settings') {
+                  if(todo == 'show') {
+                      document.getElementById('settingsButton').style.display = 'inline-block';
+                  } else if(todo == 'hide') {
+                      document.getElementById('settingsButton').style.display = 'none';
+                  }
+              } else if(butname == 'back') {
+                  if(todo == 'show') {
+                      document.getElementById('backButton').style.display = 'inline-block';
+                  } else if(todo == 'hide') {
+                      document.getElementById('backButton').style.display = 'none';
+                  }
               }
           }
           
@@ -155,8 +167,17 @@
           
           function install(key) {
               if(key == true && lock == false) {
-                  prompt('1. Press CTRL + C\n2. Create a new bookmark and delete the URL\n3. In the empty URL feild press CTRL + V\n4. Save the bookmark\n5. Click Vprotected to load', 'javascript: var username = "' + document.getElementById("displayHere").innerHTML + '"; var inject = document.createElement("script"); inject.src = "https://bingec0der.github.io/Vprotected/vprotected.js"; document.head.appendChild(inject);');
+                  prompt('1. Press CTRL + C\n2. Create a new bookmark and delete the URL\n3. In the empty URL feild press CTRL + V\n4. Save the bookmark\n5. Click Vprotected to load', 'javascript:var inject = document.createElement("script"); inject.src = "https://bingec0der.github.io/Vprotected/vprotected.js"; document.head.appendChild(inject); username = "' + document.getElementById("displayHere").innerHTML + '";');
               }
+          }
+          
+          function noname() {
+            if(lock == false) {
+              var check = getCookie(document.getElementById('displayHere').innerHTML + '_installed');
+              if(check == 'true') {
+                shh('settings', 'show')
+              }
+            }
           }
         </script>
     </head>
@@ -164,7 +185,9 @@
         <p style="text-align: right; color: red;" id="displayHere">You are not logged in</p>
     	<div class="styleist">
         	<h1>Vprotected</h1>
-            <button class="button button1" id="installButton" style="display: none;" onclick="install(true);">Install</button>
+            <button class="button button1" id="installButton" style="display: none;" onclick="install(true); setCookie(document.getElementById('displayHere').innerHTML + '_installed', 'true', 365); shh('settings', 'show');">Install</button>
+            <button class="button button1" id="settingsButton" style="display: none;" onclick="shh('install', 'hide'); shh('settings', 'hide'); shh('back', 'show');">Settings</button>
+            <button class="button button2" id="backButton" style="display: none;" onclick="shh('install', 'show'); shh('settings', 'show'); shh('back', 'hide');">Back</button>
             <button class="button button2" id="loginButton" onclick="shh('loginform', 'show'); shh('login', 'hide'); shh('register', 'hide');">Log In</button>
             <button class="button button2" id="registerButton" onclick="shh('regform', 'show'); shh('login', 'hide'); shh('register', 'hide');">Register</button>
         </div>
@@ -178,7 +201,7 @@
             <label>Password</label>
             <input type="text" id="passwordLog" placeholder="Your password..">
             <br>
-            <button class="button button1" onclick="auth();">Log in</button>
+            <button class="button button1" onclick="auth(); noname();">Log in</button>
             <button class="button button2" onclick="shh('loginform', 'hide'); shh('login', 'show'); shh('register', 'show');">Back</button>
         </div>
         

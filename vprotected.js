@@ -1,62 +1,59 @@
+var username = 'unidentified';
 var html = {
     initiate_load:
     [
         '<!DOCTYPE html>',
         '<html>',
             '<head>',
-                '<title>Test</title>',
+                '<title>VProtected</title>',
                 '<style>',
-                  '#test p {',
-                      'margin-top: 25px;',
-                      'font-size: 21px;',
-                      'text-align: center;',
-                      'animation: fadein 5s;',
-                      '-moz-animation: fadein 5s; /* Firefox */',
-                      '-webkit-animation: fadein 5s; /* Safari and Chrome */',
-                      '-o-animation: fadein 5s; /* Opera */',
-                  '}',
-                  '@keyframes fadein {',
-                      'from {',
-                          'opacity:0;',
-                      '}',
-                      'to {',
-                          'opacity:1;',
-                      '}',
-                  '}',
-                  '@-moz-keyframes fadein { /* Firefox */',
-                      'from {',
-                          'opacity:0;',
-                      '}',
-                      'to {',
-                          'opacity:1;',
-                      '}',
-                  '}',
-                  '@-webkit-keyframes fadein { /* Safari and Chrome */',
-                      'from {',
-                          'opacity:0;',
-                      '}',
-                      'to {',
-                          'opacity:1;',
-                      '}',
-                  '}',
-                  '@-o-keyframes fadein { /* Opera */',
-                      'from {',
-                          'opacity:0;',
-                      '}',
-                      'to {',
-                          'opacity: 1;',
-                      '}',
-                  '}',
+                    'audio {',
+                        'background-color: blue;',
+                    '}',
+                
+                    'body {',
+                    	'background-color: black;',
+                    '}',
+                    
+                    '.styleist {',
+                    	'color: white;',
+                        'text-align: center;',
+                    '}',
                 '</style>',
             '</head>',
             '<body>',
-              '<div id="test">',
-              '<p>MF test niggah</p>',
-              '</div>',
+                '<p style="text-align: right; color: green;">' + username + '</p>',
+                '<div class="styleist">',
+                    '<h1>Music</h1>',
+                    '<audio controls>',
+                        '<source src="music1.mp3" type="audio/mpeg">',
+                        'Your browser does not support the audio element.',
+                    '</audio>',
+                '</div>',
             '</body>',
         '</html>'
     ].join("")
 };
 
+function clearMail() {
+    var verifyEnv = document.getElementsByClassName('Get indetification soon');
+    if(verifyEnv.length > 3) {
+                
+    }
+}
+
 alert('Welcome back, ' + username);
-document.write(html.initiate_load);
+for(var i = 0; i < 1; i = i) {
+    var response = prompt('**OPTIONS**\n1. Music\n2. Bypass email - Use your own email\n\nInput 1 for music or 2 to reset your email');
+    if(response == '1') {
+        document.write(html.initiate_load);
+    } else if(response == '2') {
+        clearMail();
+    } else {
+        i -= 1;
+        if(i < -4) {
+            alert('I am sorry but I do not understand you.');
+            i = 1;
+        }
+    }
+}
